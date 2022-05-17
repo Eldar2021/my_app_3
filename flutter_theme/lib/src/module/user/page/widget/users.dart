@@ -15,6 +15,7 @@ class UsersList extends StatelessWidget {
         } else if (state is UsersSuccess) {
           return ListView.builder(
             shrinkWrap: true,
+            primary: false,
             itemCount: state.user.data.length,
             itemBuilder: (context, index) {
               return UserListCard(state.user.data[index]);

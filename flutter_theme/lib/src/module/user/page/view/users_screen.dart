@@ -23,11 +23,16 @@ class UsersScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: ListView(
-        children: [
-          UsersContainer(height: context.width * 0.7),
-          const UsersList(),
-        ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Column(
+            children: [
+              UsersContainer(height: context.width * 0.7),
+              const UsersList(),
+            ],
+          ),
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => _change(context),

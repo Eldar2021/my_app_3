@@ -1,3 +1,4 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -9,8 +10,8 @@ class WebViewPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => WebViewCubit(),
-      child: const WebViewScreen(),
+      create: (context) => WebViewCubit(Connectivity())..monitorInternet(),
+      child: const WebViewView(),
     );
   }
 }

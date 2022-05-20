@@ -75,7 +75,11 @@ class _CounterViewState extends State<CounterView> {
                             backgroundColor: Colors.white,
                           ),
                         ),
-                        Center(child: Text((state.counter.toStringAsFixed(0) + "%")))
+                        Center(
+                          child: Text(
+                            ("${state.counter.toStringAsFixed(0)}%"),
+                          ),
+                        )
                       ],
                     ),
                   );

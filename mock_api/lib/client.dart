@@ -27,7 +27,7 @@ class ApiClient {
     Response response,
     T Function(String body) fromJson,
   ) async {
-    await Future.delayed(const Duration(seconds: 2));
+    // await Future.delayed(const Duration(seconds: 1));
     if (response.statusCode == 200) {
       try {
         final model = fromJson(response.body);

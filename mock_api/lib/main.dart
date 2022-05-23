@@ -1,4 +1,3 @@
-// import 'package:dartz/dartz.dart';
 import 'package:dartz/dartz.dart' as dz;
 import 'package:flutter/material.dart';
 import 'package:mock_api/model.dart';
@@ -55,11 +54,12 @@ class _MyHomePageState extends State<MyHomePage> {
             } else if (snapshot.hasData) {
               return snapshot.data!.fold(
                 (l) => Text(l.toString()),
-                (r) => Column(
-                  children: [
-                    Text(r.id.toString()),
-                    Text(r.name),
-                  ],
+                (r) => ListTile(
+                  leading: CircleAvatar(
+                    backgroundImage: NetworkImage(r.image),
+                  ),
+                  title: Text('${r.id}'),
+                  subtitle: Text(r.name),
                 ),
               );
             } else if (snapshot.hasError) {

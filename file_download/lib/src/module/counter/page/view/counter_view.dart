@@ -1,10 +1,11 @@
+// import 'package:epub_viewer/epub_viewer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../logic/counter_cubit.dart';
 
 const String _imageUrl =
-    'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4';
+    'https://flutter.github.io/assets-for-api-docs/assets/material/app_bar.png';
 
 class CounterView extends StatefulWidget {
   const CounterView({Key? key}) : super(key: key);
@@ -57,8 +58,22 @@ class _CounterViewState extends State<CounterView> {
               builder: (context, state) {
                 if (state is CounterInitial) {
                   return IconButton(
-                    onPressed: () {
-                      context.read<CounterCubit>().downloadFile(_imageUrl);
+                    onPressed: () async {
+                       await context
+                          .read<CounterCubit>()
+                          .downloadFile(_imageUrl);
+                      // print(path);
+                      // EpubViewer.open(
+                      //   path,
+                      //   lastLocation: EpubLocator.fromJson({
+                      //     "bookId": "2239",
+                      //     "href": "/OEBPS/ch06.xhtml",
+                      //     "created": 1539934158390,
+                      //     "locations": {
+                      //       "cfi": "epubcfi(/0!/4/4[simple_book]/2/2/6)"
+                      //     }
+                      //   }), // first page will open up if the value is null
+                      // );
                     },
                     icon: const Icon(Icons.download_for_offline_outlined),
                   );

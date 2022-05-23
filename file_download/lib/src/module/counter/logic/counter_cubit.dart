@@ -11,7 +11,7 @@ part 'counter_state.dart';
 class CounterCubit extends Cubit<CounterState> {
   CounterCubit() : super(CounterInitial());
 
-  Future downloadFile(String imageUrl) async {
+  Future<String> downloadFile(String imageUrl) async {
     try {
       Dio dio = Dio();
       String fileName = imageUrl.substring(imageUrl.lastIndexOf("/") + 1);
@@ -34,17 +34,21 @@ class CounterCubit extends Cubit<CounterState> {
         },
       );
       emit(CounterSuccess(File(savePath)));
+      return savePath;
     } catch (e) {
       debugPrint(e.toString());
+      return '';
     }
   }
 
   Future<String> getFilePath(uniqueFileName) async {
-    String path = '';
+    String path = 'eldar';
 
-    Directory dir = await getApplicationDocumentsDirectory();
+    Directory? dir = await getApplicationDocumentsDirectory();
+    // print(dir);
 
     path = '${dir.path}/$uniqueFileName';
+    print(path);
 
     return path;
   }

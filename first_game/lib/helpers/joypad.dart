@@ -1,7 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 
-import 'package:flutter/cupertino.dart';
 import 'direction.dart';
 
 class Joypad extends StatefulWidget {
@@ -32,7 +31,7 @@ class JoypadState extends State<Joypad> {
           onPanEnd: onDragEnd,
           child: Container(
             decoration: BoxDecoration(
-              color: const Color(0x88ffffff),
+              color: const Color(0x88ffffff).withOpacity(0.2),
               borderRadius: BorderRadius.circular(60),
             ),
             child: Center(
@@ -45,6 +44,12 @@ class JoypadState extends State<Joypad> {
                     decoration: BoxDecoration(
                       color: const Color(0xccffffff),
                       borderRadius: BorderRadius.circular(30),
+                    ),
+                    child: Center(
+                      child: Text(
+                        'Eldi',
+                        style: Theme.of(context).textTheme.bodyText1,
+                      ),
                     ),
                   ),
                 ),

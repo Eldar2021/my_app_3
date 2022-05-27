@@ -48,7 +48,7 @@ class CounterCubit extends Cubit<CounterState> {
     // print(dir);
 
     path = '${dir.path}/$uniqueFileName';
-    print(path);
+    // print(path);
 
     return path;
   }

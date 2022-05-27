@@ -19,7 +19,7 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  List<Marker> _markers = [];
+  final _markers = <Marker>[];
   final homeScaffoldKey = GlobalKey<ScaffoldState>();
   late GoogleMapController googleMapController;
 
@@ -93,7 +93,8 @@ class _HomeViewState extends State<HomeView> {
   }
 
   void onError(PlacesAutocompleteResponse response) {
-    print(response.errorMessage);
+    // print(response.errorMessage);
+    // ignore: deprecated_member_use
     homeScaffoldKey.currentState!.showSnackBar(
       SnackBar(
         content: Text(response.errorMessage!),

@@ -18,7 +18,7 @@ class GrapScreen extends StatelessWidget {
           }
 
           if (result.isLoading) {
-            return const Text('Loading');
+            return const Center(child: CircularProgressIndicator());
           }
 
           // List? repositories = result.data?['viewer']?['repositories']?['nodes'];
@@ -32,10 +32,12 @@ class GrapScreen extends StatelessWidget {
             return ListView.builder(
               itemCount: data?.length ?? 0,
               itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(data?[index]["node"]["name"] ?? ''),
-                  //leading: Text(data?[index]["node"]["thumbnail"] ?? ''),
-                  leading: Image.network(data?[index]["node"]["thumbnail"]["url"] ?? ''),
+                return Card(
+                  child: ListTile(
+                    title: Text(data?[index]["node"]["name"] ?? ''),
+                    //leading: Text(data?[index]["node"]["thumbnail"] ?? ''),
+                    leading: Image.network(data?[index]["node"]["thumbnail"]["url"] ?? ''),
+                  ),
                 );
               },
             );

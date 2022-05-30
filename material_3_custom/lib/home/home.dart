@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:material_3_custom/home/home_cubit.dart';
-import 'package:material_3_custom/theme/theme_cubit.dart';
-import 'package:material_3_custom/views/buttons_view.dart';
-import 'package:material_3_custom/views/colors_view.dart';
-import 'package:material_3_custom/views/elevation_view.dart';
-import 'package:material_3_custom/views/typography_view.dart';
+
+import '../theme/theme_cubit.dart';
+import '../views/buttons_view.dart';
+import '../views/colors_view.dart';
+import '../views/elevation_view.dart';
+import '../views/typography_view.dart';
+import 'home_cubit.dart';
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key});
@@ -35,10 +36,7 @@ class MyHomePage extends StatelessWidget {
                 SizedBox(width: 20),
               ],
             ),
-            body: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 14),
-              child: Body(pages: pages),
-            ),
+            body: Body(pages: pages),
             bottomNavigationBar: const MyNavigationBar(),
           );
         },

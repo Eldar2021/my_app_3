@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '../constant/buttons.dart';
+
 const sizeH10 = SizedBox(height: 10);
+const sizeH20 = SizedBox(height: 20);
 const sizeW10 = SizedBox(width: 10);
 
 class ButtonsScreen extends StatelessWidget {
@@ -8,52 +11,34 @@ class ButtonsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    final buttons = Buttons.instance;
+    final eln = buttons.eln();
+    final elf = buttons.elf(scheme);
+    final elt = buttons.elt(scheme);
+    final ot = buttons.ot();
+    final tx = buttons.tx();
+    final fl = buttons.fl();
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             sizeH10,
-            Text('ElevatedButton', style: Theme.of(context).textTheme.bodyLarge),
-            sizeH10,
-            const ElevetedNormal(),
-            sizeH10,
-            const ElevetedFilled(),
-            sizeH10,
-            const ElevetedTonal(),
-            sizeH10,
-            sizeH10,
-            Text('OutlinedButton', style: Theme.of(context).textTheme.bodyLarge),
-            sizeH10,
-            const OutLineButton(),
-            sizeH10,
-            sizeH10,
-            Text('TextButton', style: Theme.of(context).textTheme.bodyLarge),
-            sizeH10,
-            const TextButtons(),
-            sizeH10,
-            sizeH10,
-            Text('FloatingActionButton', style: Theme.of(context).textTheme.bodyLarge),
-            sizeH10,
-            const FloatingButton(),
-            sizeH10,
-            sizeH10,
+            RowItem(eln, 'ElevatedButton Normal'),
+            RowItem(elf, 'ElevatedButton Filled'),
+            RowItem(elt, 'ElevatedButton Tonal'),
+            RowItem(ot, 'OutlinedButton'),
+            RowItem(tx, 'TextButton'),
+            RowItem(fl, 'FloatingActionButton'),
             const Card(
-              child: ListTile(
-                leading: Icon(Icons.access_time_outlined),
-                title: Text('ListTile in Card'),
-                trailing: Icon(Icons.vertical_align_bottom),
-              ),
+              margin: EdgeInsets.all(14),
+              child: SimpleListTile('List Tile With Card'),
             ),
-            sizeH10,
-            sizeH10,
-            const ListTile(
-              leading: Icon(Icons.access_time_outlined),
-              title: Text('ListTile with out Card'),
-              trailing: Icon(Icons.vertical_align_bottom),
-            ),
-            sizeH10,
-            sizeH10,
+            sizeH20,
+            const SimpleListTile('List Tile'),
+            sizeH20,
           ],
         ),
       ),
@@ -61,194 +46,38 @@ class ButtonsScreen extends StatelessWidget {
   }
 }
 
-class FloatingButton extends StatelessWidget {
-  const FloatingButton({
-    Key? key,
-  }) : super(key: key);
+class SimpleListTile extends StatelessWidget {
+  const SimpleListTile(this.text, {super.key});
+
+  final String text;
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        FloatingActionButton.small(
-          onPressed: () {},
-          child: const Icon(Icons.add),
-        ),
-        FloatingActionButton(
-          onPressed: () {},
-          child: const Icon(Icons.add),
-        ),
-        FloatingActionButton.extended(
-          onPressed: () {},
-          icon: const Icon(Icons.add),
-          label: const Text("Create"),
-        ),
-      ],
+    return ListTile(
+      leading: const Icon(Icons.access_time_outlined),
+      title: Text(text),
+      trailing: const Icon(Icons.vertical_align_bottom),
     );
   }
 }
 
-class TextButtons extends StatelessWidget {
-  const TextButtons({
-    Key? key,
-  }) : super(key: key);
+class RowItem extends StatelessWidget {
+  const RowItem(this.widgets, this.text, {super.key});
+
+  final List<Widget> widgets;
+  final String text;
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        TextButton(
-          onPressed: () {},
-          child: const Text('TextButton'),
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 15),
+      child: ListTile(
+        title: Text(text, style: Theme.of(context).textTheme.titleMedium),
+        subtitle: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: widgets,
         ),
-        TextButton.icon(
-          icon: const Icon(Icons.add),
-          onPressed: () {},
-          label: const Text('Icon'),
-        ),
-        const TextButton(
-          onPressed: null,
-          child: Text('TextButton'),
-        ),
-      ],
-    );
-  }
-}
-
-class OutLineButton extends StatelessWidget {
-  const OutLineButton({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        OutlinedButton(
-          onPressed: () {},
-          child: const Text('Outlined'),
-        ),
-        OutlinedButton.icon(
-          icon: const Icon(Icons.add),
-          onPressed: () {},
-          label: const Text('Icon'),
-        ),
-        const OutlinedButton(
-          onPressed: null,
-          child: Text('Outlined'),
-        ),
-      ],
-    );
-  }
-}
-
-class ElevetedTonal extends StatelessWidget {
-  const ElevetedTonal({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            onPrimary: Theme.of(context).colorScheme.onSecondaryContainer,
-            primary: Theme.of(context).colorScheme.secondaryContainer,
-          ).copyWith(elevation: ButtonStyleButton.allOrNull(0.0)),
-          onPressed: () {},
-          child: const Text('Tonal'),
-        ),
-        ElevatedButton.icon(
-          icon: const Icon(Icons.add),
-          style: ElevatedButton.styleFrom(
-            onPrimary: Theme.of(context).colorScheme.onSecondaryContainer,
-            primary: Theme.of(context).colorScheme.secondaryContainer,
-          ).copyWith(elevation: ButtonStyleButton.allOrNull(0.0)),
-          onPressed: () {},
-          label: const Text('Icon'),
-        ),
-        ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            onPrimary: Theme.of(context).colorScheme.onSecondaryContainer,
-            primary: Theme.of(context).colorScheme.secondaryContainer,
-          ).copyWith(elevation: ButtonStyleButton.allOrNull(0.0)),
-          onPressed: null,
-          child: const Text('Tonal'),
-        ),
-      ],
-    );
-  }
-}
-
-class ElevetedFilled extends StatelessWidget {
-  const ElevetedFilled({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            primary: Theme.of(context).colorScheme.primary,
-            onPrimary: Theme.of(context).colorScheme.onPrimary,
-          ),
-          onPressed: () {},
-          child: const Text('Filled'),
-        ),
-        ElevatedButton.icon(
-          icon: const Icon(Icons.add),
-          style: ElevatedButton.styleFrom(
-            primary: Theme.of(context).colorScheme.primary,
-            onPrimary: Theme.of(context).colorScheme.onPrimary,
-          ),
-          onPressed: () {},
-          label: const Text('Icon'),
-        ),
-        ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            primary: Theme.of(context).colorScheme.primary,
-            onPrimary: Theme.of(context).colorScheme.onPrimary,
-          ),
-          onPressed: null,
-          child: const Text('Filled'),
-        ),
-      ],
-    );
-  }
-}
-
-class ElevetedNormal extends StatelessWidget {
-  const ElevetedNormal({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        ElevatedButton(
-          onPressed: () {},
-          child: const Text('Elevated'),
-        ),
-        ElevatedButton.icon(
-          icon: const Icon(Icons.add),
-          onPressed: () {},
-          label: const Text('Icon'),
-        ),
-        const ElevatedButton(
-          onPressed: null,
-          child: Text('Elevated'),
-        ),
-      ],
+      ),
     );
   }
 }

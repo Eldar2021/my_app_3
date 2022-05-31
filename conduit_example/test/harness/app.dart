@@ -4,7 +4,6 @@ import 'package:conduit_test/conduit_test.dart';
 export 'package:conduit_example/conduit_example.dart';
 export 'package:conduit_test/conduit_test.dart';
 export 'package:test/test.dart';
-export 'package:conduit/conduit.dart';
 
 /// A testing harness for conduit_example.
 ///

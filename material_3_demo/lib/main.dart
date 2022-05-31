@@ -21,6 +21,7 @@ class Material3Demo extends StatefulWidget {
 const double narrowScreenWidthThreshold = 450;
 
 const Color m3BaseColor = Color(0xff6750a4);
+
 const List<Color> colorOptions = [
   m3BaseColor,
   Colors.blue,
@@ -30,6 +31,7 @@ const List<Color> colorOptions = [
   Colors.orange,
   Colors.pink
 ];
+
 const List<String> colorText = <String>[
   "M3 Baseline",
   "Blue",

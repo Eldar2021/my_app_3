@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../components/components.dart';
 import '../constant/buttons.dart';
 
 const sizeH10 = SizedBox(height: 10);
@@ -7,7 +8,7 @@ const sizeH20 = SizedBox(height: 20);
 const sizeW10 = SizedBox(width: 10);
 
 class ButtonsScreen extends StatelessWidget {
-  const ButtonsScreen({Key? key}) : super(key: key);
+  const ButtonsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -39,8 +40,39 @@ class ButtonsScreen extends StatelessWidget {
             sizeH20,
             const SimpleListTile('List Tile'),
             sizeH20,
+            const ComponentWrap(),
+            sizeH20,
+            sizeH20,
           ],
         ),
+      ),
+    );
+  }
+}
+
+class ComponentWrap extends StatelessWidget {
+  const ComponentWrap({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Wrap(
+        children: [
+          OutlinedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: ((context) => const CircularPrPage()),
+                ),
+              );
+            },
+            child: const Text('circular pr'),
+          )
+        ],
       ),
     );
   }

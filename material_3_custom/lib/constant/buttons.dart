@@ -14,14 +14,17 @@ class Buttons {
     return <Widget>[
       FloatingActionButton.small(
         onPressed: () {},
+        heroTag: '1',
         child: const Icon(Icons.add),
       ),
       FloatingActionButton(
         onPressed: () {},
+        heroTag: '2',
         child: const Icon(Icons.add),
       ),
       FloatingActionButton.extended(
         onPressed: () {},
+        heroTag: '3',
         icon: const Icon(Icons.add),
         label: const Text("Create"),
       ),

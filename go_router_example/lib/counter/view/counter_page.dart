@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:go_router_example/auth/auth.dart';
 import 'package:go_router_example/counter/counter.dart';
 import 'package:go_router_example/l10n/l10n.dart';
+import 'package:go_router_example/post/views/posts_page.dart';
 
 class CounterPage extends StatelessWidget {
   const CounterPage({super.key});
@@ -27,9 +29,20 @@ class CounterView extends StatelessWidget {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: const [
-            CounterText(),
-            CounterEleveted(),
+          children: [
+            const CounterText(),
+            const CounterEleveted(),
+            ElevatedButton(
+              onPressed: () => context.push('/posts'),
+              child: const Text('posts'),
+            ),
+            ElevatedButton(
+              onPressed: () => context.go(
+                '/posts/${posts[0]}',
+                extra: {'post': posts[0]},
+              ),
+              child: const Text('post1'),
+            ),
           ],
         ),
       ),
@@ -38,11 +51,13 @@ class CounterView extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           FloatingActionButton(
+            heroTag: '1',
             onPressed: () => context.read<CounterCubit>().increment(),
             child: const Icon(Icons.add),
           ),
           const SizedBox(height: 8),
           FloatingActionButton(
+            heroTag: '2',
             onPressed: () => context.read<CounterCubit>().decrement(),
             child: const Icon(Icons.remove),
           ),

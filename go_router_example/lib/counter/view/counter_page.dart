@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:go_router_example/auth/auth.dart';
 import 'package:go_router_example/counter/counter.dart';
 import 'package:go_router_example/l10n/l10n.dart';
@@ -58,9 +57,7 @@ class CounterEleveted extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<AuthCubit, AuthState>(
-      listenWhen: (oldState, state) => state == AuthInitial(),
-      listener: (context, state) => context.go('/auth'),
+    return BlocBuilder<AuthCubit, AuthState>(
       builder: (context, state) {
         if (state is AuthLoading) {
           return const Center(child: CircularProgressIndicator());

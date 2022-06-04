@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:go_router_example/auth/auth.dart';
 
 class AuthPage extends StatelessWidget {
@@ -17,9 +16,7 @@ class AuthPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             const Text('Sugn In'),
-            BlocConsumer<AuthCubit, AuthState>(
-              listenWhen: (oldState, state) => state == AuthSingin(),
-              listener: (context, state) => context.go('/counter'),
+            BlocBuilder<AuthCubit, AuthState>(
               builder: (context, state) {
                 if (state is AuthLoading) {
                   return const Center(child: CircularProgressIndicator());

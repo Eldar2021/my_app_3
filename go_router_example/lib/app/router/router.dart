@@ -1,8 +1,8 @@
 import 'package:go_router/go_router.dart';
+import 'package:go_router_example/app/router/is_false_router.dart';
+import 'package:go_router_example/app/router/is_true_router.dart';
 import 'package:go_router_example/auth/auth.dart';
 import 'package:go_router_example/counter/counter.dart';
-import 'package:go_router_example/post/views/post_detail.dart';
-import 'package:go_router_example/post/views/posts_page.dart';
 
 class AppRouter {
   AppRouter(this.authState);
@@ -16,18 +16,7 @@ class AppRouter {
         path: '/',
         builder: (context, state) =>
             authState is AuthSingin ? const CounterPage() : const AuthPage(),
-      ),
-      GoRoute(
-        path: '/posts',
-        builder: (context, state) => const PostsScreen(),
-        routes: [
-          GoRoute(
-            path: ':post',
-            builder: (context, state) => PostDetailScreen(
-              post: state.params['post']!,
-            ),
-          ),
-        ],
+        routes: authState is AuthSingin ? IsTRoute.I.routes : IsFRoute.I.routes,
       ),
     ],
   );

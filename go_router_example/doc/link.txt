@@ -1,0 +1,3 @@
+https://github1s.com/flutter/packages/blob/main/packages/go_router/example/lib/named_routes.dart
+https://github1s.com/flutter/codelabs/blob/HEAD/boring_to_beautiful/step_07/lib/src/shared/router.dart
+https://morioh.com/p/137cb642b5f1

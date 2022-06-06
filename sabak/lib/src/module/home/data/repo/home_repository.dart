@@ -15,7 +15,6 @@ class HomeRepoImpl implements HomeRepository {
   @override
   Future<Either<Exception, List<Post>>> getPosts() async {
     final res = service.get<List<Post>>('', fromJson: postFromJson);
-    print(res);
     return res;
   }
 

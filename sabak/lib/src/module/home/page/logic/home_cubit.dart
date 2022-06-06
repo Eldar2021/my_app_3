@@ -13,7 +13,5 @@ class HomeCubit extends Cubit<HomeState> {
     final res = await repo.getPosts();
 
     res.fold((l) => emit(HomeError(l)), (r) => emit(HomeSuccess(r)));
-
-    print(state);
   }
 }

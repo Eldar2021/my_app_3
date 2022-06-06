@@ -91,9 +91,7 @@ class CounterEleveted extends StatelessWidget {
           return const Center(child: CircularProgressIndicator());
         } else {
           return ElevatedButton(
-            onPressed: () {
-              context.read<AuthCubit>().signout();
-            },
+            onPressed: () => context.read<AuthCubit>().signout(),
             child: const Text('Sing Out'),
           );
         }

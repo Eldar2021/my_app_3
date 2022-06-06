@@ -9,6 +9,8 @@ class AppRouter {
 
   final AuthState authState;
 
+  static const home = '/';
+  
   late final router = GoRouter(
     debugLogDiagnostics: true,
     routes: [

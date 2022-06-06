@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:go_router_example/app/router/is_true_router.dart';
 
 const posts = [
   'Turat',
@@ -27,8 +28,9 @@ class PostsScreen extends StatelessWidget {
           return Card(
             child: ListTile(
               title: Text(posts[index]),
-              onTap: () => contex.push(
-                '/posts/${posts[index]}',
+              onTap: () => contex.goNamed(
+                IsTRoute.I.post,
+                params: {'post': posts[index]},
                 extra: {'post': posts[index]},
               ),
             ),

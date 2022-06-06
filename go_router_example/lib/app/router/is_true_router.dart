@@ -12,12 +12,17 @@ class IsTRoute {
     return _instance!;
   }
 
-  final List<GoRoute> routes = [
+  final String posts = 'posts';
+  final String post = 'post';
+
+  late final List<GoRoute> routes = [
     GoRoute(
+      name: posts,
       path: 'posts',
       builder: (context, state) => const PostsScreen(),
       routes: [
         GoRoute(
+          name: post,
           path: ':post',
           builder: (context, state) => PostDetailScreen(
             post: state.params['post']!,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:go_router_example/app/router/is_true_router.dart';
 import 'package:go_router_example/auth/auth.dart';
 import 'package:go_router_example/counter/counter.dart';
 import 'package:go_router_example/l10n/l10n.dart';
@@ -33,8 +34,12 @@ class CounterView extends StatelessWidget {
             const CounterText(),
             const CounterEleveted(),
             ElevatedButton(
-              onPressed: () => context.push('/posts'),
+              onPressed: () => context.go('/posts'),
               child: const Text('posts'),
+            ),
+            ElevatedButton(
+              onPressed: () => context.goNamed(IsTRoute.I.posts),
+              child: const Text('posts Named'),
             ),
             ElevatedButton(
               onPressed: () => context.go(
@@ -42,6 +47,14 @@ class CounterView extends StatelessWidget {
                 extra: {'post': posts[0]},
               ),
               child: const Text('post1'),
+            ),
+            ElevatedButton(
+              onPressed: () => context.goNamed(
+                IsTRoute.I.post,
+                params: {'post': posts[0]},
+                extra: {'post': posts[0]},
+              ),
+              child: const Text('post1 Named'),
             ),
           ],
         ),

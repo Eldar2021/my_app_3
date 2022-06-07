@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router_example/counter/view/counter_page.dart';
+import 'package:go_router_example/four/four.dart';
 import 'package:go_router_example/main_page/main_cubit.dart';
-import 'package:go_router_example/one/one.dart';
 import 'package:go_router_example/three/three.dart';
 import 'package:go_router_example/two/two.dart';
 
@@ -28,19 +28,19 @@ class MainScreen extends StatelessWidget {
     return Scaffold(
       body: PageView(
         controller: controller,
-        onPageChanged: (val) => change(val, context),
+        onPageChanged: context.read<MainCubit>().change,
         children: const [
           CounterPage(),
-          OneScreen(),
           TwoScreen(),
           ThreeScreen(),
+          FourScreen(),
         ],
       ),
       bottomNavigationBar: BlocBuilder<MainCubit, int>(
         builder: (context, state) {
           return NavigationBar(
             selectedIndex: state,
-            onDestinationSelected: (val) => change(val, context),
+            onDestinationSelected: (val) async => change(val, context),
             destinations: const [
               NavigationDestination(
                 icon: Icon(Icons.code),
@@ -65,12 +65,12 @@ class MainScreen extends StatelessWidget {
     );
   }
 
-  void change(int val, BuildContext context) {
-    controller.animateToPage(
+  Future<void> change(int val, BuildContext context) async {
+    context.read<MainCubit>().change(val);
+    await controller.animateToPage(
       val,
       duration: const Duration(milliseconds: 300),
       curve: Curves.ease,
     );
-    context.read<MainCubit>().change(val);
   }
 }

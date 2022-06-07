@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:graphql_bloc/api/client/client.dart';
-import 'package:graphql_bloc/logic/jobs_bloc.dart';
 
+import '../../../../src.dart';
 import 'jobs_screen.dart';
 
 class JobsPage extends StatelessWidget {

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:graphql_bloc/api/api.dart';
-import 'package:graphql_bloc/view/jobs/jobs_page.dart';
+import '../../src.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

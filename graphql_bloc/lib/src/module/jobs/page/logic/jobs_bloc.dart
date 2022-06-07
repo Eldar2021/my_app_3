@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 
-import '../api/api.dart';
+import '../../../../src.dart';
 
 part 'jobs_event.dart';
 part 'jobs_state.dart';

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../api/api.dart';
-import '../../logic/jobs_bloc.dart';
+import '../../../../src.dart';
+
 
 class JobsScreen extends StatelessWidget {
   const JobsScreen({super.key});

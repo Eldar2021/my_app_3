@@ -1,6 +1,5 @@
 import 'package:graphql/client.dart';
-
-import '../api.dart';
+import '../../src.dart';
 
 class JobApiClient {
   JobApiClient(GraphQLClient client) : _graphQLClient = client;

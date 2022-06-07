@@ -1,12 +1,5 @@
-import 'dart:convert';
-
-List<Job> jobFromJson(String str) => List<Job>.from(
-      json.decode(str).map((x) => Job.fromJson(x)),
-    );
-
-String jobToJson(List<Job> data) => json.encode(
-      List<dynamic>.from(data.map((x) => x.toJson())),
-    );
+List<Job> jobFromJson(List<Map<String, dynamic>> data) =>
+    data.map(((e) => Job.fromJson(e))).toList();
 
 class Job {
   Job({

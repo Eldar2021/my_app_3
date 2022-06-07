@@ -7,21 +7,30 @@ part 'jobs_event.dart';
 part 'jobs_state.dart';
 
 class JobsBloc extends Bloc<JobsEvent, JobsState> {
-  JobsBloc(this.client) : super(JobsLoading()) {
+  JobsBloc(this.repo) : super(JobsLoading()) {
     on<JobsFetchEvent>(_onJobsFetch);
+    on<CompanyFetchEvent>(_onCompaniesFetch);
   }
 
-  final JobApiClient client;
+  final JobsRepository repo;
 
   Future<void> _onJobsFetch(
     JobsFetchEvent event,
     Emitter<JobsState> emit,
   ) async {
-    try {
-      final jobs = await client.getJobs();
-      emit(JobsSuccess(jobs));
-    } catch (e) {
-      emit(JobsError(e));
-    }
+    emit(JobsLoading());
+    final res = await repo.getJobs();
+
+    res.fold((l) => emit(JobsError(l)), (r) => emit(JobsSuccess(r)));
+  }
+
+  Future<void> _onCompaniesFetch(
+    CompanyFetchEvent event,
+    Emitter<JobsState> emit,
+  ) async {
+    emit(JobsLoading());
+    final res = await repo.getCompanies();
+
+    res.fold((l) => emit(JobsError(l)), (r) => emit(CompanySuccess(r)));
   }
 }

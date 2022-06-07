@@ -1,25 +1,44 @@
+import 'package:dartz/dartz.dart';
 import 'package:graphql/client.dart';
-import '../../src.dart';
 
-class JobApiClient {
-  JobApiClient(GraphQLClient client) : _graphQLClient = client;
+class GraphQLService {
+  GraphQLService(GraphQLClient client) : _graphQLClient = client;
 
   final GraphQLClient _graphQLClient;
 
-  factory JobApiClient.create() {
-    final link = Link.from([HttpLink('https://api.graphql.jobs')]);
-    final cache = GraphQLCache();
-    return JobApiClient(GraphQLClient(cache: cache, link: link));
-  }
+  // factory JobApiClient.create() {
+  //   final link = Link.from([HttpLink('https://api.graphql.jobs')]);
+  //   final cache = GraphQLCache();
+  //   return JobApiClient(GraphQLClient(cache: cache, link: link));
+  // }
 
-  Future<List<Job>> getJobs() async {
-    final options = QueryOptions(document: gql(getJobsStr));
+  Future<Either<Exception, T>> query<T>(
+    String query,
+    String type,
+    T Function(Map<String, dynamic> body) fromJson,
+  ) async {
+    final options = QueryOptions(document: gql(query));
     final res = await _graphQLClient.query(options);
     if (res.hasException) {
-      throw GetJobsRequestFailure('${res.exception}');
+      return Left(GetJobsRequestFailure('${res.exception}'));
     } else {
-      final data = res.data?['jobs'] as List;
-      return data.map((e) => Job.fromJson(e)).toList();
+      final data = res.data?[type];
+      return Right(fromJson(data));
+    }
+  }
+
+  Future<Either<Exception, List<T>>> queryList<T>(
+    String query,
+    String type,
+    T Function(Map<String, dynamic> body) fromJson,
+  ) async {
+    final options = QueryOptions(document: gql(query));
+    final res = await _graphQLClient.query(options);
+    if (res.hasException) {
+      return Left(GetJobsRequestFailure('${res.exception}'));
+    } else {
+      final data = res.data?[type] as List;
+      return Right(data.map((e) => fromJson(e)).toList());
     }
   }
 }

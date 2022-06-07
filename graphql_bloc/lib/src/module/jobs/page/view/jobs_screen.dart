@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../src.dart';
 
-
 class JobsScreen extends StatelessWidget {
   const JobsScreen({super.key});
 
@@ -22,11 +21,19 @@ class JobsScreen extends StatelessWidget {
               return Text("${state.exception}");
             } else if (state is JobsSuccess) {
               return JobsList(state.jobs);
+            } else if (state is CompanySuccess) {
+              return CompanyList(state.companies);
             } else {
               return const Text('Some Error');
             }
           },
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          context.read<JobsBloc>().add(CompanyFetchEvent());
+        },
+        child: const Icon(Icons.ac_unit),
       ),
     );
   }
@@ -52,6 +59,33 @@ class JobsList extends StatelessWidget {
               color: Colors.orangeAccent,
             ),
             subtitle: Text(job.locationNames ?? ''),
+          ),
+        );
+      },
+    );
+  }
+}
+
+class CompanyList extends StatelessWidget {
+  const CompanyList(this.companies, {super.key});
+
+  final List<Company> companies;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      itemCount: companies.length,
+      itemBuilder: (context, index) {
+        final company = companies[index];
+        return Card(
+          child: ListTile(
+            leading: CircleAvatar(
+              backgroundImage: NetworkImage(
+                company.logoUrl ?? 'https://picsum.photos/200/300',
+              ),
+            ),
+            title: Text(company.name),
+            subtitle: Text(company.websiteUrl ?? ''),
           ),
         );
       },

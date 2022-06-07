@@ -6,3 +6,8 @@ class JobsFetchEvent extends JobsEvent {
   @override
   List<Object?> get props => [];
 }
+
+class CompanyFetchEvent extends JobsEvent {
+  @override
+  List<Object?> get props => [];
+}

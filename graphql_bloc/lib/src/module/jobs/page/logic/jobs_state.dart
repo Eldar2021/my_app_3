@@ -16,6 +16,15 @@ class JobsSuccess extends JobsState {
   List<Object?> get props => [jobs];
 }
 
+class CompanySuccess extends JobsState {
+  CompanySuccess(this.companies);
+
+  final List<Company> companies;
+
+  @override
+  List<Object?> get props => [companies];
+}
+
 class JobsError extends JobsState {
   JobsError(this.exception);
 

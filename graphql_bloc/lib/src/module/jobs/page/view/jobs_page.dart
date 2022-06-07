@@ -5,14 +5,12 @@ import '../../../../src.dart';
 import 'jobs_screen.dart';
 
 class JobsPage extends StatelessWidget {
-  const JobsPage({required this.jobApiClient, super.key});
-
-  final JobApiClient jobApiClient;
+  const JobsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => JobsBloc(jobApiClient)..add(JobsFetchEvent()),
+      create: (context) => sl<JobsBloc>()..add(JobsFetchEvent()),
       child: const JobsScreen(),
     );
   }

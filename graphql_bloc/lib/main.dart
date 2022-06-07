@@ -2,4 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'src/src.dart';
 
-void main() => runApp(const MyApp());
+void main() {
+  setup();
+  runApp(const MyApp());
+}

@@ -15,20 +15,10 @@ class GrapScreen extends StatelessWidget {
         builder: (QueryResult result, {VoidCallback? refetch, FetchMore? fetchMore}) {
           if (result.hasException) {
             return Text(result.exception.toString());
-          }
-
-          if (result.isLoading) {
+          } else if (result.isLoading) {
             return const Center(child: CircularProgressIndicator());
-          }
-
-          // List? repositories = result.data?['viewer']?['repositories']?['nodes'];
-
-          // if (repositories == null) {
-          //   return const Text('No repositories');
-          // }
-          else {
+          } else {
             List? data = result.data?['products']?['edges'];
-
             return ListView.builder(
               itemCount: data?.length ?? 0,
               itemBuilder: (context, index) {
@@ -48,7 +38,7 @@ class GrapScreen extends StatelessWidget {
   }
 }
 
-const doc1 = """{
+const doc1 = r"""{
   products(first: 5, channel: "default-channel") {
     edges {
       node {
@@ -61,4 +51,4 @@ const doc1 = """{
       }
     }
   }
-} """;
+}""";

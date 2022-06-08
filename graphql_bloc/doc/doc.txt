@@ -4,5 +4,11 @@ https://github.com/zino-hofmann/graphql-flutter/tree/main/packages/graphql_flutt
 graphql bloc example 
 https://github1s.com/felangel/bloc/blob/master/examples/flutter_graphql_jobs/lib/main.dart
 
-grapql_bloc
+graphql_bloc
 https://github.com/artflutter/graphql_flutter_bloc/tree/master/example
+
+
+https://hasura.io/learn/graphql/flutter-graphql/introduction/
+
+
+https://hasura.io/learn/graphql/intro-graphql/core-concepts/

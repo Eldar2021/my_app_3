@@ -12,9 +12,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         useMaterial3: true,
       ),
-      home: JobsPage(
-        //jobApiClient: JobApiClient.create(),
-      ),
+      home: const JobsPage(),
     );
   }
 }

@@ -159,6 +159,10 @@ https://github1s.com/felangel/bloc/blob/master/examples/flutter_graphql_jobs/lib
 
 https://itnext.io/flutter-x-graphql-a2dea05e6564    
 
-https://medium.flutterdevs.com/implement-graphql-with-flutter-153f30881915    
+https://medium.flutterdevs.com/implement-graphql-with-flutter-153f30881915
+
+https://blog.codemagic.io/flutter-graphql/
+
+https://hasura.io/learn/graphql/flutter-graphql/introduction/
 
   

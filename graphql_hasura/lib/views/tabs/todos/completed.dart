@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../components/add_task.dart';
 import '../../../components/to_do_item_tile.dart';
+import '../../../data/todo_fetch.dart';
 import '../../../data/todo_list.dart';
 
 class Completed extends StatefulWidget {
@@ -27,17 +28,22 @@ class _CompletedState extends State<Completed> {
             itemCount: todoList.completeList.length,
             itemBuilder: (context, index) {
               return TodoItemTile(
+                toggleDocument: TodoFetch.toggleTodo,
                 item: todoList.completeList[index],
-                delete: () {
-                  setState(() {
-                    todoList.removeTodo(todoList.completeList[index].id);
-                  });
+                toggleRunMutaion: const {
+                  'id': 1,
+                  'isCompleted': true,
+                },
+                deleteDocument: TodoFetch.deleteTodo,
+                deleteRunMutaion: const {
+                  'id': 1,
                 },
                 toggleIsCompleted: () {
                   setState(() {
                     todoList.toggleList(todoList.completeList[index].id);
                   });
                 },
+                refetchQuery: () {},
               );
             },
           ),

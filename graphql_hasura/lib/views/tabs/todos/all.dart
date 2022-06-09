@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:graphql_flutter/graphql_flutter.dart';
 
 import '../../../components/add_task.dart';
 import '../../../components/to_do_item_tile.dart';
+import '../../../data/todo_fetch.dart';
 import '../../../data/todo_list.dart';
+import '../../../model/todo_item.dart';
 
 class All extends StatefulWidget {
   const All({Key? key}) : super(key: key);
@@ -18,32 +21,71 @@ class _AllState extends State<All> {
     super.initState();
   }
 
+  VoidCallback? refetchQuery;
   @override
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        AddTask(
-          onAdd: (value) {
-            todoList.addTodo(value);
+        Mutation(
+          options: MutationOptions(
+            document: gql(TodoFetch.addTodo),
+            update: (cache, result) {
+              cache;
+            },
+            onCompleted: (dynamic resultData) {
+              refetchQuery!();
+            },
+          ),
+
+          /// builder
+          builder: (RunMutation runMutation, QueryResult? result) {
+            return AddTask(
+              onAdd: (value) {
+                todoList.addTodo(value);
+                runMutation({'title': value, 'isPublic': false});
+              },
+            );
           },
         ),
         Expanded(
-          child: ListView.builder(
-            itemCount: todoList.list.length,
-            itemBuilder: (context, index) {
-              return TodoItemTile(
-                item: todoList.list[index],
-                delete: () {
-                  setState(() {
-                    todoList.removeTodo(todoList.list[index].id);
-                  });
-                },
-                toggleIsCompleted: () {
-                  setState(() {
-                    todoList.toggleList(todoList.list[index].id);
-                  });
-                },
-              );
+          child: Query(
+            options: QueryOptions(
+              document: gql(TodoFetch.fetchAll),
+              // variables: const {"is_public": false},
+            ),
+            builder: (QueryResult res, {VoidCallback? refetch, FetchMore? fetchMore}) {
+              refetchQuery = refetch;
+              if (res.hasException) {
+                return Text(res.exception.toString());
+              } else if (res.isLoading) {
+                return const Text('Loading');
+              } else {
+                final List<dynamic> todos = (res.data!['todos'] as List<dynamic>).cast<dynamic>();
+                return ListView.builder(
+                  itemCount: todos.length,
+                  itemBuilder: (context, index) {
+                    dynamic data = todos[index];
+                    return TodoItemTile(
+                      toggleDocument: TodoFetch.toggleTodo,
+                      toggleRunMutaion: {
+                        'id': data["id"],
+                        'isCompleted': !data['is_completed'],
+                      },
+                      refetchQuery: refetchQuery ?? () {},
+                      item: TodoItem(
+                        data['id'],
+                        data['title'],
+                        data['is_completed'],
+                      ),
+                      deleteDocument: TodoFetch.deleteTodo,
+                      deleteRunMutaion: {
+                        'id': data["id"],
+                      },
+                      toggleIsCompleted: () {},
+                    );
+                  },
+                );
+              }
             },
           ),
         ),

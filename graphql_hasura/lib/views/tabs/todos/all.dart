@@ -3,6 +3,7 @@ import 'package:graphql_flutter/graphql_flutter.dart';
 
 import '../../../components/add_task.dart';
 import '../../../components/to_do_item_tile.dart';
+import '../../../data/online_fetch_data.dart';
 import '../../../data/todo_fetch.dart';
 import '../../../data/todo_list.dart';
 import '../../../model/todo_item.dart';
@@ -16,8 +17,29 @@ class All extends StatefulWidget {
 }
 
 class _AllState extends State<All> {
+  late final GraphQLClient _client;
+
+  runOnlineMutation(context) {
+    _client = GraphQLProvider.of(context).value;
+    Future.doWhile(
+      () async {
+        _client.mutate(
+          MutationOptions(
+            document: gql(OnlineFetch.updateStatus),
+            variables: {
+              'now': DateTime.now().toUtc().toIso8601String(),
+            },
+          ),
+        );
+        await Future.delayed(const Duration(seconds: 30));
+        return true;
+      },
+    );
+  }
+
   @override
   void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) => runOnlineMutation(context));
     super.initState();
   }
 

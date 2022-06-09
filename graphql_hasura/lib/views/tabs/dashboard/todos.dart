@@ -21,15 +21,9 @@ class _TodosState extends State<Todos> {
         appBar: AppBar(
           title: const TabBar(
             tabs: [
-              Tab(
-                text: "All",
-              ),
-              Tab(
-                text: "Active",
-              ),
-              Tab(
-                text: "Completed",
-              ),
+              Tab(text: "All"),
+              Tab(text: "Active"),
+              Tab(text: "Completed"),
             ],
           ),
         ),

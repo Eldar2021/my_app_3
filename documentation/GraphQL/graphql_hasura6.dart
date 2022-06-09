@@ -1,3 +1,4 @@
+/*
 Watching data - Subscriptions
 
 GraphQL özelliği, GraphQL sorguları gibi abonelik adı verilen bir 
@@ -27,12 +28,14 @@ subscription {
 }
 
 GraphQL abonelikleri nasıl çalışır?
-    GraphQL sorguları ve mutasyonları, bir POST uç noktasına gönderilen dizelerdir. 
-    GraphQL aboneliği nedir? Bu, bir POST uç noktası üzerinden gerçekleşemez, 
-    çünkü basit bir HTTP uç noktası yalnızca yanıtı döndürür ve bağlantı kapanır.
+    GraphQL sorguları ve mutasyonları, bir POST uç noktasına gönderilen 
+    dizelerdir. GraphQL aboneliği nedir? Bu, bir POST uç noktası üzerinden 
+    gerçekleşemez, çünkü basit bir HTTP uç noktası yalnızca yanıtı döndürür 
+    ve bağlantı kapanır.
 
-    GraphQL aboneliği, bir websocket uç noktasına gönderilen bir abonelik sorgu dizesidir. 
-    Ve arka uçtaki veriler her değiştiğinde, yeni veriler web yuvaları üzerinden 
-    sunucudan istemciye gönderilir.
+    GraphQL aboneliği, bir websocket uç noktasına gönderilen bir abonelik 
+    sorgu dizesidir. Ve arka uçtaki veriler her değiştiğinde, yeni veriler 
+    web yuvaları üzerinden sunucudan istemciye gönderilir.
 
 
+*/

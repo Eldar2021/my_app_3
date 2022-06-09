@@ -1,22 +1,28 @@
+/*
 GraphQL nedir?
-    En basit ifadeyle GraphQL, API'ler için bir sorgu dilidir. Bu ne anlama geliyor?
-    API'nizden belirli öğeleri sorgulamanıza izin verir (tıpkı veritabanınızda
-    yaptığınız gibi). Bunun anlamı, API'nizden veri istediğinizde büyük (veya küçük)
-    bir nesne almak yerine, API'den tam olarak ne istediğinizi seçebilirsiniz ve
-    graphQL onu size geri döndürür. Daha fazla ayrıntıyı kendi web sitesinde bulabilirsiniz .
+    En basit ifadeyle GraphQL, API'ler için bir sorgu dilidir. Bu ne anlama 
+    geliyor? API'nizden belirli öğeleri sorgulamanıza izin verir 
+    (tıpkı veritabanınızda yaptığınız gibi). Bunun anlamı, API'nizden veri 
+    istediğinizde büyük (veya küçük) bir nesne almak yerine, API'den tam 
+    olarak ne istediğinizi seçebilirsiniz ve graphQL onu size geri döndürür. 
+    Daha fazla ayrıntıyı kendi web sitesinde bulabilirsiniz.
     https://graphql.org/
 
 BLOC nedir?
     BLoC, iş mantığınızı bileşenlerinizden ayırmanızı vurgulayan bir mimari
     modeldir. BLo => İş Mantığı, C => Bileşenler. BLoC modelini uygulamanın
-    birkaç yolu vardır, ancak yakın zamana kadar BLoC modelini tasarlandığı gibi
-    kullanıyordum.
+    birkaç yolu vardır, ancak yakın zamana kadar BLoC modelini tasarlandığı 
+    gibi kullanıyordum.
+
     felix melekov. https://medium.com/@felangelov
+
     ve bu demoda kullanacağım şey bu. Daha fazla
+
     ayrıntıyı buradan https://bloclibrary.dev/#/
+
     öğrenebilirsiniz . Bu kılavuzu önceden bilgi sahibi olmadan
-    takip edebilirsiniz, ancak ön bilgi size en iyi şekilde yardımcı olacaktır. Lafı fazla
-    uzatmadan başlayalım.
+    takip edebilirsiniz, ancak ön bilgi size en iyi şekilde yardımcı olacaktır. 
+    Lafı fazla uzatmadan başlayalım.
 
 Usage of GraphQL:-
     GraphQL is very useful for any flutter project who have complex APIs. 
@@ -28,7 +34,8 @@ GraphQL işleminin üç ana türü vardır:
     Mutation,
     Subscription.
 
-    ticket Şemamızda bir modelimiz olduğunu ve bu modelin üç alan içerdiğini varsayalım 
+    ticket Şemamızda bir modelimiz olduğunu ve bu modelin üç alan içerdiğini v
+    arsayalım 
         :id, status, created_at
 
     Birden çok giriş getirme
@@ -97,10 +104,12 @@ GraphQL işleminin üç ana türü vardır:
 Bir temel GraphQLAPIClient oluşturun.
     
 GraphQLAPIClient'ten genişleyen sınıf içinde yürütmek istediğimiz 
-    mutasyon/sorgu/abonelik belgelerini içeren bir zaman uyumsuz işlev oluşturun .
-    Ardından, özel durumları işleyin ve yanıttaki verileri ayrıştırın. 
+    mutasyon/sorgu/abonelik belgelerini içeren bir zaman uyumsuz işlev 
+    oluşturun . Ardından, özel durumları işleyin ve yanıttaki verileri 
+    ayrıştırın. 
 
-Sağlayıcı sınıfımız içinde ChangeNotifier'dan uzanan başka bir zaman uyumsuz işlev oluşturun , 
+Sağlayıcı sınıfımız içinde ChangeNotifier'dan uzanan başka bir zaman uyumsuz 
+işlev oluşturun , 
     2. adımda işlevi çağırın ve veri işlemeye başlayın.
 
 Dinleyicilere sunucudan gelen verilerin değişmiş olabileceğini bildirin.
@@ -165,4 +174,4 @@ https://blog.codemagic.io/flutter-graphql/
 
 https://hasura.io/learn/graphql/flutter-graphql/introduction/
 
-  
+*/  

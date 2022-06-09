@@ -1,3 +1,5 @@
+/*
+
 Bir GraphQL istemcisi kurun
 
 graphql_flutter eklentisi, GraphQL sunucunuza düzgün bir soyutlama 
@@ -15,3 +17,5 @@ abonelikler için websocket bağlantısı gerektirir.
 
 Bunu yapmak için client.dartiçinde lib/configklasör 
 adında bir dosya oluşturun ve içine aşağıdaki kodu ekleyin
+
+*/

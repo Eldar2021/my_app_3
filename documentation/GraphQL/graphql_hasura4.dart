@@ -1,3 +1,4 @@
+/*
 Fetching data - Queries
 Try out GraphQL queries
 
@@ -36,7 +37,8 @@ query {
 4) GraphQL sorgusunu çalıştırmak için ctrl + enterveya cmd + enter(mac) 
 tuşuna basın veya ▶️ simgesine tıklayın
 
-5) Sağ tarafta, sistemde bulunan adlarına göre bir kullanıcı listesi görmelisiniz!
+5) Sağ tarafta, sistemde bulunan adlarına göre bir kullanıcı listesi 
+görmelisiniz!
 
 Fetch users and their todos
 This GraphQL query will fetch all the users and their publicly visible todos:
@@ -51,7 +53,8 @@ This GraphQL query will fetch all the users and their publicly visible todos:
  }
 
 Fetch online users and their profile information
-This GraphQL query will fetch all the currently online users and their profile information 
+This GraphQL query will fetch all the currently online users and their 
+profile information 
 (which is just their name for now):
 
  query {
@@ -68,8 +71,8 @@ This GraphQL query will fetch all the currently online users and their profile i
     Çoğu API çağrısında genellikle parametreleri kullanırsınız. 
     Örneğin, hangi verileri getirdiğinizi belirtmek için. 
     Arama yapmaya GETaşinaysanız, bir sorgu parametresi kullanırdınız. 
-    Örneğin, yalnızca 10 todo almak için şu API çağrılarını yapmış olabilirsiniz: 
-    GET /api/todos?limit=10.
+    Örneğin, yalnızca 10 todo almak için şu API çağrılarını yapmış 
+    olabilirsiniz: GET /api/todos?limit=10.
 
 Basic argument: Fetch 10 todos
 This GraphQL query will fetch 10 todos and not all of them.
@@ -88,7 +91,8 @@ filtre, sıralama ve sayfalama argümanları sağlayan GraphQL arka ucunu
 oluşturmak için Hasura kullanıyoruz. Kullandığınız GraphQL sunucusu 
 veya API, kullanılabilecek farklı bir argüman seti sağlayabilir.
 
-Birden çok alanda birden çok bağımsız değişken: Her kullanıcı için 1 kullanıcı ve en son 5 yapılacakları getir
+Birden çok alanda birden çok bağımsız değişken: Her kullanıcı için 1 
+kullanıcı ve en son 5 yapılacakları getir
 
 query {
   users (limit: 1) {
@@ -103,8 +107,8 @@ query {
 
 GraphQL değişkenleri: Sorgularınıza dinamik olarak argümanlar iletme
     Bu harika, ama hala bir sorunumuz var. Dinamik olarak sağlanan argümanlarla 
-    veri getirdiğimiz bir sorgu oluşturmak istiyorsak, tüm sorgu dizesini yeniden 
-    oluşturmamız gerekir.
+    veri getirdiğimiz bir sorgu oluşturmak istiyorsak, tüm sorgu dizesini 
+    yeniden oluşturmamız gerekir.
 
 var limit = getMaxTodosFromUserInput();
 var query = "query { todos (limit: " + limit.toString() + ") {id title} }";
@@ -119,3 +123,4 @@ query ($limit: Int!) {
   }
 }
 
+*/

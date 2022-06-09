@@ -1,3 +1,4 @@
+/*
 GraphQL'ye Giriş
 
 GraphQL nedir?
@@ -38,18 +39,19 @@ GraphQL'de Düşünmek
     Bir kaynağı 'GET'lemek yerine, istediğiniz verileri açıklayan bir 
     sorguyu 'POST' edersiniz.
 
-    API'nizin döndürdüğü verileri bir "grafik" olarak düşünürsünüz, bu, "ilgili" 
-    veri parçalarını tek seferde getirmek için sorgular yapmanıza olanak tanır. 
-    Yukarıdaki örnekte, 2 API çağrısı yapmak yerine, kullanıcıyı ve kullanıcının 
-    adresini (iç içe JSON nesnesi olarak) aynı API çağrısında alırsınız.
+    API'nizin döndürdüğü verileri bir "grafik" olarak düşünürsünüz, bu, 
+    "ilgili" veri parçalarını tek seferde getirmek için sorgular yapmanıza 
+    olanak tanır. Yukarıdaki örnekte, 2 API çağrısı yapmak yerine, kullanıcıyı 
+    ve kullanıcının adresini (iç içe JSON nesnesi olarak) aynı API çağrısında 
+    alırsınız.
 
-    POST isteğinde veri olarak gönderdiğiniz "sorgu"nun bir yapısı ve sözdizimi vardır. 
-    Bu "dile" GraphQL denir.
+    POST isteğinde veri olarak gönderdiğiniz "sorgu"nun bir yapısı ve 
+    sözdizimi vardır. Bu "dile" GraphQL denir.
 
 Yukarıdaki örnekte görebileceğiniz gibi, GraphQL sorguları çok düzenli ve 
-okunması kolay görünüyor! Bunun nedeni, sorgunun, istediğiniz son JSON verilerinin 
-"şekli" olmasıdır. Bu, GraphQL'i birlikte çalışmayı bir keyif haline getiren temel 
-nedenlerden biridir!
+okunması kolay görünüyor! Bunun nedeni, sorgunun, istediğiniz son JSON 
+verilerinin "şekli" olmasıdır. Bu, GraphQL'i birlikte çalışmayı bir keyif 
+haline getiren temel nedenlerden biridir!
 
 GraphQL avantajları
 
@@ -83,3 +85,5 @@ GraphQL avantajları
     Writing data	                POST	               mutation
     Updating/deleting data	        PUT/PATCH/DELETE	   mutation
     Watching/subscribing to data	-	                   subscription
+
+    */

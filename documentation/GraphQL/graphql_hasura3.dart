@@ -1,3 +1,5 @@
+/*
+
 Mimari
 
 GraphQL'yi anlamada daha fazla ilerlemeden önce, 
@@ -20,18 +22,20 @@ GraphQL client-server flow:
     sunucu GraphQL sorgusunu işler ve doğrular.
 
 3:  Tipik bir API sunucusu gibi, GraphQL API sunucusu daha sonra istemcinin 
-    istediği verileri almak için bir veritabanına veya diğer hizmetlere çağrı yapar.
+    istediği verileri almak için bir veritabanına veya diğer hizmetlere çağrı 
+    yapar.
 
 4:  Sunucu daha sonra verileri alır ve bir JSON nesnesinde istemciye döndürür.
 
 Örnek GraphQL istemci kurulumu:
 
-Günlük işlerinizde, aslında altta yatan HTTP istekleri ve yanıtları hakkında endişelenmenize gerek yok.
+Günlük işlerinizde, aslında altta yatan HTTP istekleri ve yanıtları hakkında 
+endişelenmenize gerek yok.
 
-Tıpkı bir REST API ile çalıştığınızda ve API çağrıları yapmak ve yanıtları işlemek için 
-standartı azaltmak için bir HTTP istemcisi kullandığınızda olduğu gibi, GraphQL sorgularını 
-yazmayı, göndermeyi ve yanıtları işlemeyi çok daha kolay hale getirmek için bir 
-GraphQL istemcisi seçebilirsiniz.
+Tıpkı bir REST API ile çalıştığınızda ve API çağrıları yapmak ve yanıtları 
+işlemek için standartı azaltmak için bir HTTP istemcisi kullandığınızda olduğu 
+gibi, GraphQL sorgularını yazmayı, göndermeyi ve yanıtları işlemeyi çok daha 
+kolay hale getirmek için bir GraphQL istemcisi seçebilirsiniz.
 
 Aslında, GraphQL sorgusunu nasıl gönderdiğiniz ve GraphQL yanıtını nasıl kabul 
 ettiğinizin mekanizması standart hale geldi. Bu, istemci üzerinde 
@@ -52,4 +56,6 @@ client.query (`
     }
   }`
 );
-            
+
+
+*/

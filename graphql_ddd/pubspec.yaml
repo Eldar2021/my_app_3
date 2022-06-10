@@ -10,6 +10,7 @@ dependencies:
   cached_network_image: ^3.2.1
   connectivity_plus: ^2.3.3
   dartz: ^0.10.1
+  equatable: ^2.0.3
   flutter:
     sdk: flutter
   flutter_bloc: ^8.0.1

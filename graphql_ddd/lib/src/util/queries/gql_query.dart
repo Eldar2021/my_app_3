@@ -1,7 +1,7 @@
 mixin GqlQuery {
   static const String charactersQuery = r'''
-  query (\$page: Int!){
-    characters(page: \$page){
+  query ($page: Int!){
+    characters(page: $page){
       results{
         id
         name
@@ -16,8 +16,8 @@ mixin GqlQuery {
   ''';
 
   static const String locationsQuery = r'''
-  query (\$page: Int!){
-    locations(page: \$page){
+  query ($page: Int!){
+    locations(page: $page){
       results{
         id
         name
@@ -29,8 +29,8 @@ mixin GqlQuery {
   ''';
 
   static const String episodesQuery = r'''
-  query (\$page: Int!){
-    episodes(page: \$page){
+  query ($page: Int!){
+    episodes(page: $page){
       results{
         id
         name

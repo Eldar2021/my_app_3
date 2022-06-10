@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:equatable/equatable.dart';
 
 class Location extends Equatable {
@@ -10,11 +8,7 @@ class Location extends Equatable {
     required this.dimension,
   });
 
-  factory Location.fromJson(String source) => Location.fromMap(
-        json.decode(source) as Map<String, dynamic>,
-      );
-
-  factory Location.fromMap(Map<String, dynamic> map) {
+  factory Location.fromJson(Map<String, dynamic> map) {
     return Location(
       id: map['id'] as String,
       name: map['name'] as String,
@@ -23,9 +17,7 @@ class Location extends Equatable {
     );
   }
 
-  String toJson() => json.encode(toMap());
-
-  Map<String, dynamic> toMap() {
+  Map<String, dynamic> toJson() {
     return <String, dynamic>{
       'id': id,
       'name': name,

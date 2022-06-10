@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:equatable/equatable.dart';
 
 class Episode extends Equatable {
@@ -10,22 +8,16 @@ class Episode extends Equatable {
     required this.episode,
   });
 
-  factory Episode.fromJson(String source) => Episode.fromMap(
-        json.decode(source) as Map<String, dynamic>,
-      );
-
-  factory Episode.fromMap(Map<String, dynamic> map) {
+  factory Episode.fromJson(Map<String, dynamic> json) {
     return Episode(
-      id: map['id'] as String,
-      name: map['name'] as String,
-      airDate: map['airDate'] as String,
-      episode: map['episode'] as String,
+      id: json['id'] as String,
+      name: json['name'] as String,
+      airDate: json['airDate'] as String,
+      episode: json['episode'] as String,
     );
   }
 
-  String toJson() => json.encode(toMap());
-
-  Map<String, dynamic> toMap() {
+  Map<String, dynamic> toJson() {
     return <String, dynamic>{
       'id': id,
       'name': name,

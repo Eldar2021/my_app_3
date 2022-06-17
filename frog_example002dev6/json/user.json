@@ -1,0 +1,12 @@
+{
+    "id": 1,
+    "name": "Элдияр",
+    "year": 2000,
+    "birth": "17 октябрь",
+    "country": "Кыргызстан",
+    "city": "Ош",
+    "token": {
+        "access": "access_token",
+        "refresh": "refresh_token"
+    }
+}

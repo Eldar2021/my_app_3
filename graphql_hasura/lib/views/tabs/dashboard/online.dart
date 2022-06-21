@@ -24,7 +24,6 @@ class Online extends StatelessWidget {
               document: gql(OnlineFetch.fetchUsers),
             ),
             builder: (res) {
-              print(res);
               if (res.hasException) {
                 return Text(res.exception.toString());
               } else if (res.isLoading) {
